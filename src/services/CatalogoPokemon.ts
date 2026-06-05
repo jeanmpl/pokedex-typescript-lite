@@ -1,5 +1,5 @@
 import { PokemonResumo } from "../models/Pokemon";
-import { formatarPokemon } from ".utils/formatarPokemon";
+import { formatarPokemon } from "../utils/formatarPokemon";
 // RF 12 - Classe simples para organizar o catálogo.
 // Ela guarda um arrary interno de Pokémon e oferece métodos para adicionar, listar e remover.
 
