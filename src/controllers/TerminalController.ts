@@ -1,4 +1,4 @@
-import { buscarPokemon } from "../services/pokeApi";
+import { buscarPokemon } from "../services/PokeApi";
 import { CatalogoPokemon } from "../services/CatalogoPokemon";
 
 export class TerminalController {
@@ -8,7 +8,6 @@ export class TerminalController {
         console.log(" === Demonstração da Pokedex TypeScript Lite ===");
 
         // Busca e adiciona vários pokémons ao catálogo (os primeiros 6 do Ash na série original).
-
         const pikachu = await buscarPokemon("pikachu");
         if (pikachu !== null) {
             await this.catalogo.adicionar(pikachu);
@@ -39,23 +38,25 @@ export class TerminalController {
             await this.catalogo.adicionar(squirtle);
         }    
 
-        // Tentar adicionar o pikachu novamente para testar a duplicidade
+        // Tenta adicionar o pikachu novamente para testar a duplicidade
         const pikachuDuplicado = await buscarPokemon("pikachu");
         if (pikachuDuplicado !== null) {
             await this.catalogo.adicionar(pikachuDuplicado);
         }
 
-        // Tentar buscar um pokemon inexistente para testar o tratamento de erro
-
+        // Tenta buscar um pokemon inexistente para testar o tratamento de erro
         await buscarPokemon("pokemon-inexistente");
 
-        // Listar os pokemons no catálogo
+        // Busca vazia para demonstrar tratamento de erro
+        await buscarPokemon("  ");
+
+        // Lista os pokemons no catálogo
         await this.catalogo.listar();
 
-        // Remover o pikachu do catálogo
+        // Remove o pikachu do catálogo
         await this.catalogo.remover(25);
 
-        // Listar novamente para verificar a remoção
+        // Lista novamente para verificar a remoção
         await this.catalogo.listar();
 
         // Tenta remover pikachu novamente para testar o tratamento do erro de remoção

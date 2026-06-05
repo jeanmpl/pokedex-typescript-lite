@@ -2,9 +2,9 @@ import { readFile, writeFile } from "node:fs/promises";
 import { LocalBoxError } from "../models/CustomErrors";
 import { PokemonResumo } from "../models/Pokemon";
 import { formatarPokemon } from "../utils/formatarPokemon";
+
 // RF 12 - Classe para organizar o catálogo.
 // Nesta versão final, o catálogo é persistido no arquivo pc_box.json.
-
 export class CatalogoPokemon {
 
     // Métodos auxiliares privados para ler e escrever o arquivo JSON.

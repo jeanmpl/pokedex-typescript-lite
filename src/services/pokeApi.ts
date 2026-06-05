@@ -20,6 +20,7 @@ export async function buscarPokemon(nomeOuId: string): Promise<PokemonResumo | n
             throw new APIError(`Pokémon não encontrado: ${nomeOuId}`);
         }
 
+        // Conversão da resposta JSON em objetos seguindo o formato PokemonApiResponse e depois mapeamento para PokemonResumo.
         const dados = (await resposta.json()) as PokemonApiResponse;
 
         // RF06 - Mapeamento da resposta da API para um objeto simplificado.
@@ -34,11 +35,12 @@ export async function buscarPokemon(nomeOuId: string): Promise<PokemonResumo | n
         console.log(`[OK] Pokémon encontrado: ${pokemon.nome}`);
         return pokemon;
     } catch (erro) {
+        // Tratamento de erro específico para APIError
         if (erro instanceof APIError) {
             console.log(`[ERRO] ${erro.message}`);
             return null;
         }
-
+        // Tratamento de erro genérico para outros tipos de erro 
         console.log("[ERRO] Não foi possível buscar o Pokémon na API.");
         return null;
     }
