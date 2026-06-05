@@ -2,11 +2,13 @@ import { readFile, writeFile } from "node:fs/promises";
 import { LocalBoxError } from "../models/CustomErrors";
 import { PokemonResumo } from "../models/Pokemon";
 import { formatarPokemon } from "../utils/formatarPokemon";
-// RF 12 - Classe simples para organizar o catálogo.
+// RF 12 - Classe para organizar o catálogo.
 // Nesta versão final, o catálogo é persistido no arquivo pc_box.json.
 
 export class CatalogoPokemon {
-    // Definição do caminho do arquivo
+
+    // Métodos auxiliares privados para ler e escrever o arquivo JSON.
+    // Em ambos há definição de tratamento de erro para casos onde o arquivo não pode ser lido ou escrito, lançando um LocalBoxError com mensagem apropriada.
     private readonly caminhoArquivo = "pc_box.json";
     
     private async carregarCatalogo(): Promise<PokemonResumo[]> {
@@ -28,6 +30,9 @@ export class CatalogoPokemon {
         }
     }    
 
+
+    // Métodos públicos para adicionar, listar e remover Pokémons do catálogo.
+    // Agora os métodos são async e utilizam os métodos auxiliares construidos acima.
     // RF 08 - Adicionar Pokémon ao catálogo sem permitir duplicidade pelo ID.
     public async adicionar(pokemon: PokemonResumo): Promise<void> {
         try {
