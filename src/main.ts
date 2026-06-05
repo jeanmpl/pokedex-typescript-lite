@@ -1,6 +1,8 @@
 import { buscarPokemon } from "./services/pokeApi";
 import { CatalogoPokemon } from "./services/CatalogoPokemon";
 
+
+// MPV pronta para demonstrar as funcionalidades básicas do catálogo
 // RF13 - Demonstração do fluxo da aplicação.
 // Não há menu interativo. O funcionamento é demonstrado por chamadas diretas de função.
 
@@ -13,6 +15,10 @@ async function main(): Promise<void> {
     const pikachu = await buscarPokemon("pikachu");
     if (pikachu !== null) {
         catalogo.adicionar(pikachu);
+    }
+    const bulbasaur = await buscarPokemon("bulbasaur");
+    if (bulbasaur !== null) {
+        catalogo.adicionar(bulbasaur);
     }
 
     // Busca o pokemon charmander e adiciona ao catálogo
