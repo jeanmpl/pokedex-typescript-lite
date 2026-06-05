@@ -1,5 +1,5 @@
 import { PokemonResumo } from "../models/Pokemon";
-
+import { formatarPokemon } from ".utils/formatarPokemon";
 // RF 12 - Classe simples para organizar o catálogo.
 // Ela guarda um arrary interno de Pokémon e oferece métodos para adicionar, listar e remover.
 
@@ -29,7 +29,7 @@ export class CatalogoPokemon {
         console.log("Catálogo atual:");
 
         this.pokemons.forEach((pokemon) => {
-            console.log(`#${pokemon.id} - ${pokemon.nome} | Tipos: ${pokemon.tipos.join(", ")} | Altura: ${pokemon.altura} | Peso: ${pokemon.peso}`);
+            console.log(formatarPokemon(pokemon));
         });
     }
 
