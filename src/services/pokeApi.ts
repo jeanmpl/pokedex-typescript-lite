@@ -19,7 +19,7 @@ export async function buscarPokemon(nomeOuId: string): Promise<PokemonResumo | n
         // RF06 - Mapeamento da resposta da API para um objeto simplificado.
         const pokemon: PokemonResumo = { 
             id: dados.id,
-            nome: dados.nome,
+            nome: dados.name,
             tipos: dados.types.map((item: {type: {name: string}}) => item.type.name),
             altura: dados.height,
             peso: dados.weight

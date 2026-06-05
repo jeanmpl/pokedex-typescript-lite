@@ -10,7 +10,7 @@ async function main(): Promise<void> {
     const catalogo = new CatalogoPokemon();
 
     // Busca o pokemon pikachu e adiciona ao catálogo
-    const pikachu = await buscarPokemon("pikachi");
+    const pikachu = await buscarPokemon("pikachu");
     if (pikachu !== null) {
         catalogo.adicionar(pikachu);
     }
