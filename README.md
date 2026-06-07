@@ -128,10 +128,7 @@ Observação: o comando `npm run start` executa o arquivo compilado em `dist/mai
 pokedex-typescript-lite/
 │
 ├── assets/
-│   └── images/
-│       ├── execucao-terminal.png
-│       ├── pc-box-json.png
-│       └── kanban.png
+│   └── images/...│       
 │
 ├── src/
 │   ├── main.ts
@@ -272,16 +269,11 @@ pikachu
 
 Saída esperada:
 
-```txt
-[OK] Pokémon encontrado: pikachu
-[OK] pikachu adicionado ao catálogo.
-```
+![Saída esperada para busca de pikachu](assets/images/pikachu-demo.png)
 
 Ao listar o catálogo, a saída esperada inclui:
 
-```txt
-#25 - pikachu | Tipos: electric | Altura: 4 | Peso: 60
-```
+![Saída esperada para listar só com pikachu](assets/images/pikachu-listar.png)
 
 ---
 
@@ -300,20 +292,7 @@ squirtle
 
 Saída esperada:
 
-```txt
-[OK] Pokémon encontrado: pikachu
-[OK] pikachu adicionado ao catálogo.
-[OK] Pokémon encontrado: butterfree
-[OK] butterfree adicionado ao catálogo.
-[OK] Pokémon encontrado: pidgeotto
-[OK] pidgeotto adicionado ao catálogo.
-[OK] Pokémon encontrado: bulbasaur
-[OK] bulbasaur adicionado ao catálogo.
-[OK] Pokémon encontrado: charmander
-[OK] charmander adicionado ao catálogo.
-[OK] Pokémon encontrado: squirtle
-[OK] squirtle adicionado ao catálogo.
-```
+![Saída esperada para fluxo de adição de 6 pokemons](assets/images/pokemons-ash-adicionados.png)
 
 ---
 
@@ -329,10 +308,7 @@ O Pokémon `pikachu` é buscado uma segunda vez e enviado novamente para o catá
 
 Saída esperada:
 
-```txt
-[OK] Pokémon encontrado: pikachu
-[AVISO] pikachu já está no catálogo.
-```
+![Saída esperada para busca de pikachu duplicado](assets/images/pikachu-duplicado.png)
 
 A duplicidade é verificada pelo `id` do Pokémon.
 
@@ -348,9 +324,7 @@ pokemon-inexistente
 
 Saída esperada:
 
-```txt
-[ERRO] Pokémon não encontrado: pokemon-inexistente
-```
+![Saída esperada para busca de pokemon inexistente](assets/images/pokemon-inexistente.png)
 
 O sistema não quebra quando a busca falha. A função retorna `null`, e o Pokémon inválido não é adicionado ao catálogo.
 
@@ -368,9 +342,7 @@ Essa busca é usada para demonstrar o tratamento de uma entrada vazia ou inváli
 
 Saída esperada:
 
-```txt
-[ERRO] Informe um nome ou ID de Pokémon.
-```
+![Saída esperada para busca em branco](assets/images/entrada-vazia.png)
 
 ---
 
@@ -378,15 +350,7 @@ Saída esperada:
 
 Depois de adicionar os Pokémon válidos, a listagem exibe os registros salvos no catálogo:
 
-```txt
-Catálogo atual:
-#25 - pikachu | Tipos: electric | Altura: 4 | Peso: 60
-#12 - butterfree | Tipos: bug, flying | Altura: 11 | Peso: 320
-#17 - pidgeotto | Tipos: normal, flying | Altura: 11 | Peso: 300
-#1 - bulbasaur | Tipos: grass, poison | Altura: 7 | Peso: 69
-#4 - charmander | Tipos: fire | Altura: 6 | Peso: 85
-#7 - squirtle | Tipos: water | Altura: 5 | Peso: 90
-```
+![Saída esperada para listar catalogo dos 6 pokemons](assets/images/listar1.png)
 
 ---
 
@@ -400,11 +364,11 @@ remover ID 25
 
 Saída esperada:
 
-```txt
-[OK] Pokémon removido do catálogo.
-```
+![Saída esperada para remover o pikachu](assets/images/remocao.png)
 
 Depois da remoção, o Pikachu não deve mais aparecer na listagem.
+
+![Saída esperada para listar catalogo dos 5 pokemons](assets/images/listar2.png)
 
 ---
 
@@ -420,9 +384,7 @@ remover ID 25
 
 Saída esperada:
 
-```txt
-[AVISO] Nenhum Pokémon encontrado com esse ID.
-```
+![Saída esperada para remocao duplicada de pikachu](assets/images/remocao-dupla.png)
 
 Esse teste demonstra que a aplicação trata corretamente a tentativa de remover um Pokémon que não está no catálogo.
 
@@ -448,14 +410,12 @@ pokemon-inexistente
 
 Saída esperada:
 
-```txt
-[ERRO] Pokémon não encontrado: pokemon-inexistente
-```
+![Saída esperada para busca de pokemon inexistente](assets/images/pokemon-inexistente.png)
 
 Esse erro é tratado no arquivo:
 
 ```txt
-src/services/PokeApi.ts
+src/services/pokeApi.ts
 ```
 
 Quando a PokeAPI retorna uma resposta inválida, como status `404`, a aplicação cria um erro personalizado do tipo `APIError`.
@@ -476,9 +436,7 @@ Esse caso serve para demonstrar que a função de busca deve validar o valor rec
 
 Saída esperada:
 
-```txt
-[ERRO] Informe um nome ou ID de Pokémon.
-```
+![Saída esperada para busca em branco](assets/images/entrada-vazia.png)
 
 Esse tratamento evita chamadas desnecessárias para a API e impede que entradas vazias sejam processadas como se fossem nomes válidos.
 
@@ -500,7 +458,7 @@ Exemplos de causas:
 Forma manual de testar:
 
 1. desconecte temporariamente a internet; ou
-2. altere temporariamente a URL da API no arquivo `src/services/PokeApi.ts`.
+2. altere temporariamente a URL da API no arquivo `src/services/pokeApi.ts`.
 
 Exemplo de alteração temporária:
 
@@ -516,9 +474,7 @@ npm run dev
 
 Saída esperada:
 
-```txt
-[ERRO] Não foi possível buscar o Pokémon na API.
-```
+![Saída esperada para erro de conexao com api](assets/images/erro-api.png)
 
 Após o teste, a URL deve ser restaurada para:
 
@@ -554,9 +510,7 @@ npm run dev
 
 Saída esperada:
 
-```txt
-[ERRO] Não foi possível carregar o catálogo.
-```
+![Saída esperada para erro de conexao com base de dados](assets/images/erro-catalogo.png)
 
 Esse erro é tratado no arquivo:
 
@@ -592,9 +546,7 @@ npm run dev
 
 Saída esperada:
 
-```txt
-[ERRO] Não foi possível carregar o catálogo.
-```
+![Saída esperada para erro de conexao com api](assets/images/erro-catalogo-JSON-incorreto.png)
 
 Isso acontece porque a aplicação tenta converter o conteúdo do arquivo usando `JSON.parse`.
 
@@ -611,11 +563,10 @@ Após o teste, restaure o arquivo para um array JSON válido:
 ### 6. Erro ao salvar no `pc_box.json`
 
 Esse erro é mais difícil de testar mas foi criado um tratamento para caso algum erro no salvamento ocorra.
-```
 
 Saída esperada:
 
-```txt
+```
 [ERRO] Não foi possível salvar o catálogo.
 ```
 
